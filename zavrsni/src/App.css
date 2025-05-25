@@ -1,3 +1,4 @@
+/* ==== GLOBAL RESET ==== */
 .container {
   width: 100%;
   min-height: 100%;
@@ -8,7 +9,7 @@
   font-family: sans-serif;
 }
 
-/* Header je sada klikabilan */
+/* ==== HEADER ==== */
 .header {
   display: flex;
   align-items: center;
@@ -17,28 +18,25 @@
   margin-bottom: 20px;
   cursor: pointer;
 }
-
 .logo {
   width: 48px;
   height: 48px;
   object-fit: contain;
 }
-
 .heading {
   font-size: 2.5rem;
   margin: 0;
 }
 
-/* Kontrole (search + sort) */
+/* ==== CONTROLS ==== */
 .controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
-
 .search-input {
   padding: 8px 12px;
   font-size: 1rem;
@@ -48,13 +46,10 @@
   color: #fff;
   outline: none;
 }
-
 .search-input::placeholder {
   color: #bbb;
 }
-
 .select {
-  margin-left: 8px;
   padding: 6px 10px;
   border-radius: 4px;
   border: 1px solid #444;
@@ -62,15 +57,27 @@
   color: #fff;
   font-size: 1rem;
 }
+.fav-toggle {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #646cff;
+  background: transparent;
+  color: #646cff;
+  cursor: pointer;
+}
+.fav-toggle:hover {
+  background: #646cff;
+  color: #fff;
+}
 
-/* Grid s 5 kolona */
+/* ==== GRID ==== */
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
 }
 
-/* Kartice */
+/* ==== CARD ==== */
 .card {
   background: #fff;
   color: #111;
@@ -80,15 +87,14 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
+  position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  height: 100%;
+  cursor: pointer;
 }
-
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 }
-
 .card-image {
   width: 100%;
   height: auto;
@@ -98,23 +104,286 @@
   display: block;
   margin: 0 auto;
 }
-
 .card-info {
   padding: 12px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
-
 .card-title {
   font-size: 1.1rem;
   margin: 0 0 8px;
 }
-
 .card-rating,
 .card-premiere {
   font-size: 0.875rem;
   margin: 2px 0;
   color: #555;
+}
+.card-fav {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.card-fav.fav {
+  color: #aaa;
+}
+.card-fav.unfav {
+  color: #f39c12;
+}
+
+/* ==== FAVORITES LIST BASIC ==== */
+.favorites-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.favorite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.favorite-name {
+  cursor: pointer;
+}
+.favorite-name:hover {
+  text-decoration: underline;
+}
+.favorite-remove {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.favorite-remove:hover {
+  background: #c0392b;
+}
+
+/* ==== DETAIL VIEW ==== */
+.detail-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
+.back-button {
+  background: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.back-button:hover {
+  background: #535bf2;
+}
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.fav-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid;
+}
+.fav-button.fav {
+  border-color: #646cff;
+  color: #646cff;
+}
+.fav-button.fav:hover {
+  background: #646cff;
+  color: #fff;
+}
+.fav-button.unfav {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+.fav-button.unfav:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* ==== TABS ==== */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tab {
+  padding: 8px 16px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+}
+.tab.active {
+  background: #646cff;
+  font-weight: bold;
+}
+.tab-content {
+  background: #fff;
+  color: #111;
+  border-radius: 0 4px 4px 4px;
+  padding: 16px;
+}
+
+/* ==== EPISODES ==== */
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.episode-item {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.episode-item:hover {
+  background: #f0f0f0;
+}
+.episode-detail {
+  padding: 16px;
+}
+.episode-back-button {
+  background: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.episode-back-button:hover {
+  background: #535bf2;
+}
+.episode-title {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+/* ==== CAST GRID ==== */
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.cast-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.cast-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #ddd;
+}
+.cast-placeholder {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  color: #666;
+}
+.cast-name {
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+.cast-character {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* ==== FAVORITES GRID ==== */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 20px 0;
+}
+
+/* ==== FAVORITE CARD ==== */
+.favorite-card {
+  background: #fff;
+  color: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.favorite-poster {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #242424;
+}
+.favorite-info {
+  padding: 8px;
+  width: 100%;
+}
+.favorite-name {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* ==== VIDLJIVIJI SMALL FAVORITE BUTTONS ==== */
+.fav-button.small {
+  background: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.fav-button.small:hover {
+  background: #535bf2;
+}
+
+/* ==== DETAIL IMAGE ==== */
+.detail-image {
+  width: auto;
+  max-width: 100%;
+  max-height: 500px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 20px;
 }
