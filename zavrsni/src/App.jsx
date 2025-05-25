@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "./App.css";
+import Loading from "./Loading.jsx";
+import NotFound from "./NotFound.jsx";
 
 export default function App() {
   // STATE
+  const [loading, setLoading] = useState(false);
+const [notFound, setNotFound] = useState(false);
   const [shows, setShows] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("");
